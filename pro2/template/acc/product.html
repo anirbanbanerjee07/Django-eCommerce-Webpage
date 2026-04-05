@@ -1,0 +1,51 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<a class="btn btn-success btn-block" href="{% url 'add_product' %}">
+						Add Product
+					</a>
+					<h5>Products</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Product</th>
+							<th>Category</th>
+							<th>description</th>
+							<th>Price</th>
+							<th>Image</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+
+						{% for product in products %}
+							<tr>
+   								<td>{{ product.name }}</td>
+    							<td>{{ product.category }}</td>
+    							<td>{{ product.description }}</td>
+								<td>{{ product.price }}</td>
+    							<td>
+								{% if product.pic %}
+								<img src="{{ product.pic.url }}" height="50" width="50">
+								{% else %}
+								<span class="text-muted">No Image</span>
+								{% endif %}
+								</td>
+    							<td><a href="{% url 'update_product' product.id %}" class="btn btn-info">Update</a></td>
+								<td><a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Delete</a></td>
+							</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}

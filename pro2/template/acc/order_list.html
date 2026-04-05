@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+
+        <!-- Title -->
+        <div class="card card-body mb-3">
+            <h5>Order List</h5>
+        </div>
+
+        <!-- 🔍 FILTER FORM (ADDED HERE) -->
+        <div class="card card-body mb-3">
+            <form method="get" class="row g-2 align-items-end">
+                {{ myFilter.form }}
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Table -->
+        <div class="card card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in orders %}
+                    <tr>
+                        <td>{{ i.customer }}</td>
+                        <td>{{ i.product }}</td>
+                        <td>{{ i.date_created }}</td>
+                        <td>
+                            {% if i.product.pic %}
+                                <img src="{{ i.product.pic.url }}" height="50" width="50">
+                            {% else %}
+                                <span class="text-muted">No Image</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ i.status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">
+                            No orders found
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

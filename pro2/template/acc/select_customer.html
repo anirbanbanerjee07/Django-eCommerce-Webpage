@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card card-body">
+        <h5>Select a Customer</h5>
+        <hr>
+        
+        {% if customers %}
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>
+                            <a href="{% url 'create_order_customer' customer.id %}" class="btn btn-primary btn-sm">
+                                Select Customer
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No customers found. Please <a href="{% url 'create_customer' %}">create a customer</a> first.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

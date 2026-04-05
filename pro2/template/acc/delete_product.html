@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="card card-body">
+        <h4>Are you sure you want to delete "{{ item }}"?</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            <a href="{% url 'product' %}" class="btn btn-warning">Cancel</a>
+            <input type="submit" value="Confirm Delete" class="btn btn-danger">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

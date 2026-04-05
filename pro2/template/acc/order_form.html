@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card card-body">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if formset %}
+                {{ formset.management_form }}
+
+                {% for form in formset %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <hr>
+                {% endfor %}
+
+                <input type="submit" value="Submit Orders" class="btn btn-success">
+
+            {% else %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Create Order" class="btn btn-success">
+
+            {% endif %}
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

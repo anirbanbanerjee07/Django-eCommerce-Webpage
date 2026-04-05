@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card card-body">
+
+        <h3>{% if product %}Update Product{% else %}Add Product{% endif %}</h3>
+        <hr>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Show current image if exists (for update) -->
+            {% if product and product.pic %}
+            <div class="mb-3">
+                <label class="form-label">Current Image:</label>
+                <div>
+                    <img src="{{ product.pic.url }}" alt="{{ product.name }}" style="max-width: 200px; max-height: 200px;">
+                </div>
+                <div class="form-check mt-2">
+                    <input type="checkbox" name="pic-clear" id="pic-clear" class="form-check-input">
+                    <label for="pic-clear" class="form-check-label">Remove current image</label>
+                </div>
+            </div>
+            {% endif %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-success">{% if product %}Update Product{% else %}Add Product{% endif %}</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

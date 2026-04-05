@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="display:flex; justify-content:center; align-items:center; min-height:80vh;">
+    <div style="width:400px;">
+
+        <div style="border-radius:14px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+
+            <div style="background: linear-gradient(90deg,#1e6be3,#2b7bff); padding:15px; color:white; font-weight:600;">
+                Update Customer
+            </div>
+
+            <div style="background:#e9ecef; padding:20px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button type="submit" style="
+                        width:100%;
+                        margin-top:15px;
+                        padding:10px;
+                        background:linear-gradient(90deg,#5f76d6,#7a4db4);
+                        border:none;
+                        border-radius:8px;
+                        color:white;
+                        font-weight:600;">
+                        Update Customer
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

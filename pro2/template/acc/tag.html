@@ -1,0 +1,31 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>TAG list</h5>
+	<a class="btn btn-danger btn-block" href="{% url 'import_tag' %}">Import Tag csv</a>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Name</th>
+						</tr>
+
+						{% for i in tag %}
+							<tr>
+								<td>{{i.name}}</td>
+							</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+
+            <h3>Import Tag CSV File</h3>
+            <hr>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input type="file" name="file" class="form-control" required>
+                <br>
+
+                <button type="submit" class="btn btn-danger">Upload</button>
+                <a class="btn btn-secondary" href="{% url 'tag' %}">Back</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

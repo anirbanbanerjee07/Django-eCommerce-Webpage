@@ -66,6 +66,24 @@ project/
 
 ---
 
+## ⚙️ Installation & Setup
+
+```yaml
+cd PROJECT_MAIN FOLDER_NAME
+cd PROJECT_FOLDER
+cd env
+cd scripts
+activate
+cd..
+cd..
+python manage.py runserver
+```
+```yaml
+http://127.0.0.1:8000/
+```
+
+---
+
 ## 🧠 Key Concepts Used
 
 - Django Models & ORM

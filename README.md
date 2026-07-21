@@ -7,8 +7,8 @@ This project manages **Customers, Products, Orders, and Tags** with full CRUD fu
 
 ## Credentials
 ```yaml
-- Username -> ani
-- Password -> ani
+Username -> ani
+Password -> ani
 ```
 
 ---
